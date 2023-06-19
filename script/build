@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -eu
+
+echo "Target foo"
+if [ ! -e "build/foo" ] || [ "src/foo" -nt "build/foo" ]; then
+    echo "Updated foo"
+    mkdir -p "build"
+    cp -f "src/foo" "build/foo"
+else
+    echo "Reuse foo"
+fi
